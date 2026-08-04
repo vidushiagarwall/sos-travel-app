@@ -1,0 +1,22 @@
+[
+  { "countryCode": "US", "countryName": "United States", "police": "911", "ambulance": "911", "fire": "911" },
+  { "countryCode": "GB", "countryName": "United Kingdom", "police": "999", "ambulance": "999", "fire": "999", "general": "112" },
+  { "countryCode": "IN", "countryName": "India", "police": "100", "ambulance": "108", "fire": "101", "general": "112" },
+  { "countryCode": "CA", "countryName": "Canada", "police": "911", "ambulance": "911", "fire": "911" },
+  { "countryCode": "AU", "countryName": "Australia", "police": "000", "ambulance": "000", "fire": "000" },
+  { "countryCode": "DE", "countryName": "Germany", "police": "110", "ambulance": "112", "fire": "112" },
+  { "countryCode": "FR", "countryName": "France", "police": "17", "ambulance": "15", "fire": "18", "general": "112" },
+  { "countryCode": "IT", "countryName": "Italy", "police": "113", "ambulance": "118", "fire": "115", "general": "112" },
+  { "countryCode": "ES", "countryName": "Spain", "police": "091", "ambulance": "061", "fire": "080", "general": "112" },
+  { "countryCode": "JP", "countryName": "Japan", "police": "110", "ambulance": "119", "fire": "119" },
+  { "countryCode": "TH", "countryName": "Thailand", "police": "191", "ambulance": "1669", "fire": "199" },
+  { "countryCode": "SG", "countryName": "Singapore", "police": "999", "ambulance": "995", "fire": "995" },
+  { "countryCode": "AE", "countryName": "United Arab Emirates", "police": "999", "ambulance": "998", "fire": "997" },
+  { "countryCode": "ZA", "countryName": "South Africa", "police": "10111", "ambulance": "10177", "fire": "10177" },
+  { "countryCode": "BR", "countryName": "Brazil", "police": "190", "ambulance": "192", "fire": "193" },
+  { "countryCode": "MX", "countryName": "Mexico", "police": "911", "ambulance": "911", "fire": "911" },
+  { "countryCode": "NZ", "countryName": "New Zealand", "police": "111", "ambulance": "111", "fire": "111" },
+  { "countryCode": "NL", "countryName": "Netherlands", "police": "112", "ambulance": "112", "fire": "112" },
+  { "countryCode": "IE", "countryName": "Ireland", "police": "112", "ambulance": "112", "fire": "112", "general": "999" },
+  { "countryCode": "GR", "countryName": "Greece", "police": "100", "ambulance": "166", "fire": "199", "general": "112" }
+]

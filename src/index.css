@@ -1,0 +1,279 @@
+:root {
+  --text: #2b2b33;
+  --bg: #ffffff;
+  --border: #e2e2e6;
+  --accent: #d9376e;
+  --accent-dark: #b12a58;
+  --danger: #d93025;
+  --muted: #767680;
+  color-scheme: light dark;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f0f0f3;
+    --bg: #17171b;
+    --border: #2f2f36;
+    --muted: #9b9ba3;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+}
+
+#root {
+  max-width: 720px;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 16px 0;
+}
+
+h2 {
+  font-size: 18px;
+  margin: 24px 0 8px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.error {
+  color: var(--danger);
+  font-size: 14px;
+}
+
+.disclaimer {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+.page {
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.navbar {
+  display: flex;
+  border-top: 1px solid var(--border);
+  order: 2;
+}
+
+.nav-tab {
+  flex: 1;
+  padding: 12px 4px;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.nav-tab.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.map-container {
+  width: 100%;
+  height: 320px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin: 12px 0;
+}
+
+.place-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+
+.place-list li {
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot.police {
+  background: #1a73e8;
+}
+
+.dot.hospital {
+  background: #d93025;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+  max-width: 360px;
+}
+
+.form input {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.form button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-item,
+.trip-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.badge {
+  font-size: 11px;
+  background: var(--accent);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 6px;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.trip-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.sos-center {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.sos-button {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: none;
+  background: var(--danger);
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(217, 48, 37, 0.4);
+}
+
+.sos-button:disabled {
+  background: var(--border);
+  color: var(--muted);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.sos-panel {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.message-preview {
+  background: var(--code-bg, rgba(128, 128, 128, 0.1));
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+
+.button-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.button,
+.button-row button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.emergency-numbers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.emergency-numbers > div {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.emergency-numbers strong {
+  font-size: 20px;
+}
