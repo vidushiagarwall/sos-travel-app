@@ -1,0 +1,39 @@
+/** HerWay brand lockup: a location-pin + shield mark plus wordmark. */
+export function BrandMark({ className = 'brand-mark' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M16 2c6 0 11 4.5 11 10.5 0 7-7.5 13.5-10.3 16.6a1 1 0 0 1-1.5 0C12.5 26 5 19.5 5 12.5 5 6.5 10 2 16 2Z"
+        fill="#2e8b8b"
+      />
+      <path
+        d="M16 7.2c3.1 0 5.4 1.9 5.4 1.9v4.6c0 3.9-2.6 6-5.4 7.3-2.8-1.3-5.4-3.4-5.4-7.3V9.1S12.9 7.2 16 7.2Z"
+        fill="#fff"
+      />
+      <path
+        d="m13.4 13.4 1.9 1.9 3.5-3.6"
+        stroke="#2e8b8b"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+export function Brand({ onClick }: { onClick?: () => void }) {
+  return (
+    <button className="brand" onClick={onClick} type="button">
+      <BrandMark />
+      <span>
+        Her<b>Way</b>
+      </span>
+    </button>
+  )
+}

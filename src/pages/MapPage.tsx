@@ -65,9 +65,10 @@ export function MapPage() {
   }, [places])
 
   return (
-    <div className="page">
-      <h1>Nearby Safety</h1>
-      {locationLoading && <p>Getting your location…</p>}
+    <div>
+      <h1 className="page-title">Nearby Safety</h1>
+      <p className="page-sub">Police stations, hospitals and safe places around you right now.</p>
+      {locationLoading && <p className="muted">Getting your location…</p>}
       {locationError && <p className="error">{locationError}</p>}
       {mapError && <p className="error">{mapError}</p>}
       <div ref={mapRef} className="map-container" />

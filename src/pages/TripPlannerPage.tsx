@@ -65,11 +65,11 @@ export function TripPlannerPage() {
   }
 
   return (
-    <div className="page">
-      <h1>Trips</h1>
-      <p className="muted">Plan a route and share it with your trusted contacts before you head out.</p>
+    <div>
+      <h1 className="page-title">Trips</h1>
+      <p className="page-sub">Plan a route and share it with your trusted contacts before you head out.</p>
 
-      <form onSubmit={handlePlan} className="form">
+      <form onSubmit={handlePlan} className="form card">
         <input placeholder="Trip name" value={title} onChange={(e) => setTitle(e.target.value)} required />
         <input placeholder="Starting point" value={originText} onChange={(e) => setOriginText(e.target.value)} required />
         <input
@@ -78,7 +78,7 @@ export function TripPlannerPage() {
           onChange={(e) => setDestinationText(e.target.value)}
           required
         />
-        <button type="submit" disabled={loading}>
+        <button className="btn btn-primary" type="submit" disabled={loading}>
           {loading ? 'Planning route…' : 'Save trip'}
         </button>
       </form>
@@ -99,18 +99,20 @@ export function TripPlannerPage() {
           <p className="message-preview">{shareState.message}</p>
           {contacts.length === 0 && <p className="error">Add trusted contacts first to send this.</p>}
           <div className="button-row">
-            <a className="button" href={buildSmsLink(contacts.map((c) => c.phoneNumber), shareState.message)}>
+            <a className="btn btn-primary" href={buildSmsLink(contacts.map((c) => c.phoneNumber), shareState.message)}>
               Send via SMS
             </a>
             <a
-              className="button"
+              className="btn btn-primary"
               href={buildWhatsAppLink(shareState.message, contacts[0]?.phoneNumber)}
               target="_blank"
               rel="noreferrer"
             >
               Send via WhatsApp
             </a>
-            <button onClick={handleCopy}>{copied ? 'Copied!' : 'Copy message'}</button>
+            <button className="btn btn-ghost" onClick={handleCopy}>
+              {copied ? 'Copied!' : 'Copy message'}
+            </button>
           </div>
         </div>
       )}

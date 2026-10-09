@@ -27,11 +27,11 @@ export function ContactsPage() {
   }
 
   return (
-    <div className="page">
-      <h1>Trusted Contacts</h1>
-      <p className="muted">These are the people who receive your SOS and trip-sharing messages.</p>
+    <div>
+      <h1 className="page-title">Trusted Contacts</h1>
+      <p className="page-sub">The people who receive your SOS and trip-sharing messages.</p>
 
-      <form onSubmit={handleAdd} className="form">
+      <form onSubmit={handleAdd} className="form card">
         <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
         <input
           placeholder="Phone number (e.g. +1 555 123 4567)"
@@ -48,7 +48,7 @@ export function ContactsPage() {
           <input type="checkbox" checked={isPrimary} onChange={(e) => setIsPrimary(e.target.checked)} />
           Primary contact
         </label>
-        <button type="submit">Add contact</button>
+        <button className="btn btn-primary" type="submit">Add contact</button>
       </form>
 
       {contacts.length === 0 ? (

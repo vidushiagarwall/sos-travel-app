@@ -12,9 +12,10 @@ export function SafetyInfoPage() {
   const entry = country ? numbers.find((n) => n.countryCode === country.countryCode) : undefined
 
   return (
-    <div className="page">
-      <h1>Local Safety Info</h1>
-      {locationLoading && <p>Getting your location…</p>}
+    <div>
+      <h1 className="page-title">Local Safety Info</h1>
+      <p className="page-sub">Emergency numbers and embassies for wherever you are.</p>
+      {locationLoading && <p className="muted">Getting your location…</p>}
       {locationError && <p className="error">{locationError}</p>}
       {countryLoading && <p className="muted">Detecting your country…</p>}
       {countryError && <p className="error">{countryError}</p>}
@@ -60,7 +61,7 @@ export function SafetyInfoPage() {
         {country ? ` in ${country.countryName}` : ''}:
       </p>
       <a
-        className="button"
+        className="btn btn-primary"
         href={`https://www.google.com/search?q=embassy+in+${encodeURIComponent(country?.countryName ?? '')}`}
         target="_blank"
         rel="noreferrer"

@@ -1,23 +1,28 @@
+import { IconMap, IconSOS, IconUsers, IconRoute, IconInfo } from './icons'
+
 export type Page = 'map' | 'sos' | 'contacts' | 'trips' | 'safety'
 
-const TABS: { id: Page; label: string }[] = [
-  { id: 'map', label: 'Map' },
-  { id: 'sos', label: 'SOS' },
-  { id: 'contacts', label: 'Contacts' },
-  { id: 'trips', label: 'Trips' },
-  { id: 'safety', label: 'Safety Info' },
+const TABS: { id: Page; label: string; Icon: typeof IconMap }[] = [
+  { id: 'map', label: 'Map', Icon: IconMap },
+  { id: 'sos', label: 'SOS', Icon: IconSOS },
+  { id: 'contacts', label: 'Contacts', Icon: IconUsers },
+  { id: 'trips', label: 'Trips', Icon: IconRoute },
+  { id: 'safety', label: 'Safety', Icon: IconInfo },
 ]
 
 export function NavBar({ current, onChange }: { current: Page; onChange: (page: Page) => void }) {
   return (
     <nav className="navbar">
-      {TABS.map((tab) => (
+      {TABS.map(({ id, label, Icon }) => (
         <button
-          key={tab.id}
-          className={tab.id === current ? 'nav-tab active' : 'nav-tab'}
-          onClick={() => onChange(tab.id)}
+          key={id}
+          className={
+            (id === current ? 'nav-tab active' : 'nav-tab') + (id === 'sos' ? ' sos' : '')
+          }
+          onClick={() => onChange(id)}
         >
-          {tab.label}
+          <Icon />
+          {label}
         </button>
       ))}
     </nav>
