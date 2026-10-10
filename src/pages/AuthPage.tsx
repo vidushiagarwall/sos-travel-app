@@ -4,9 +4,8 @@ import { BrandMark } from '../components/Brand'
 type Mode = 'login' | 'signup'
 
 /**
- * Auth UI. This is the visual/UX layer only — it does not yet perform real
- * authentication. Wiring to a secure backend (e.g. email+password / OAuth) is a
- * later milestone; for now "continue" simply enters the app.
+ * Login and signup screens. There is no real sign-in yet, so "continue"
+ * just takes you into the app. Real accounts come in Milestone 7.
  */
 export function AuthPage({
   initialMode = 'login',
@@ -91,7 +90,7 @@ export function AuthPage({
         </p>
 
         <p className="auth-note">
-          🔒 Secure sign-in is coming soon. For this preview, continue to explore the app.
+          🔒 Real accounts are coming soon. For now, just hop in and look around.
         </p>
       </div>
     </div>

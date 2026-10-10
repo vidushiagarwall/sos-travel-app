@@ -1,13 +1,13 @@
 import { Brand } from '../components/Brand'
-import {
-  IconShield,
-  IconUsers,
-  IconMap,
-  IconBell,
-  IconPin,
-  IconHeart,
-} from '../components/icons'
+import { IconShield, IconUsers, IconMap, IconPin } from '../components/icons'
 import { HeroArt } from '../components/HeroArt'
+import { IntroSplash } from '../components/IntroSplash'
+import { Postcard } from '../components/Postcard'
+import { PracticeSOS } from '../components/PracticeSOS'
+import { PackingGame } from '../components/PackingGame'
+import { useReveal } from '../hooks/useReveal'
+
+const PLACES = ['Lisbon', 'Hanoi', 'Jaipur', 'Kyoto', 'Bali', 'Istanbul', 'Cusco', 'Marrakech', 'Seoul', 'Santorini']
 
 export function LandingPage({
   onGetStarted,
@@ -16,8 +16,12 @@ export function LandingPage({
   onGetStarted: () => void
   onLogin: () => void
 }) {
+  useReveal()
+
   return (
     <div className="landing">
+      <IntroSplash />
+
       <header className="landing-header">
         <Brand />
         <nav className="landing-nav">
@@ -30,119 +34,125 @@ export function LandingPage({
         </nav>
       </header>
 
-      {/* Hero */}
       <section className="hero">
         <div>
-          <span className="chip hero-eyebrow">
-            <IconHeart style={{ width: 16, height: 16 }} /> Built for women, by design
-          </span>
+          <span className="chip hero-eyebrow">For women who travel solo ✈</span>
           <h1>
-            Travel the world, <em>feeling safe</em> every step of the way.
+            Go anywhere. <em>Someone's got your back.</em>
           </h1>
           <p className="hero-lead">
-            HerWay is a safety companion for women travellers. Share your location with people you
-            trust, find help nearby, and reach emergency services instantly — all from one calm,
-            reassuring place.
+            HerWay keeps the people you trust in the loop, shows you where help is nearby, and puts
+            the local emergency numbers one tap away. So you can stop worrying and actually enjoy
+            the trip.
           </p>
           <div className="hero-cta">
             <button className="btn btn-primary" onClick={onGetStarted}>
-              Get started — it's free
+              Start for free
             </button>
             <button className="btn btn-ghost" onClick={onLogin}>
-              I already have an account
+              I have an account
             </button>
           </div>
           <p className="hero-trust">
             <IconShield style={{ width: 18, height: 18 }} />
-            Your location is only ever shared with people you choose.
+            Your location only goes to people you pick. Nobody else.
           </p>
         </div>
         <div className="hero-art">
           <HeroArt />
+          <span className="scribble hero-scribble">your people, always close</span>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="section" id="features">
-        <div className="section-head">
-          <h2>Everything you need to feel confident on the road</h2>
-          <p>Thoughtful tools that work quietly in the background — until the moment you need them.</p>
+      <div className="marquee" aria-hidden="true">
+        <div className="marquee-track">
+          {[...PLACES, ...PLACES].map((p, i) => (
+            <span key={i}>
+              {p} <i>✦</i>
+            </span>
+          ))}
         </div>
-        <div className="features">
-          <Feature
-            icon={<IconBell />}
-            tone=""
-            title="One-tap SOS"
-            body="Send your live location and a help message to your trusted contacts in a single tap."
-          />
+      </div>
+
+      <section className="section reveal" id="postcard">
+        <div className="section-head">
+          <h2>Where are you off to?</h2>
+          <p>Pick a place and flip the postcard. These are the numbers to save before you land.</p>
+        </div>
+        <span className="scribble postcard-scribble">go on, pick one ↓</span>
+        <Postcard />
+      </section>
+
+      <section className="section reveal" id="features">
+        <div className="section-head">
+          <h2>What's inside</h2>
+          <p>Five tools. No clutter.</p>
+        </div>
+        <div className="bento">
+          <article className="feature feature-big">
+            <h3>SOS in one tap</h3>
+            <p>Your live location and a help message go straight to your people.</p>
+            <PracticeSOS />
+          </article>
           <Feature
             icon={<IconMap />}
             tone=""
-            title="Safety map"
-            body="Instantly see the nearest police stations, hospitals and safe places around you."
+            title="Help nearby"
+            body="See the closest police stations and hospitals on a map, wherever you are."
           />
           <Feature
             icon={<IconUsers />}
             tone="lav"
-            title="Trusted circle"
-            body="Add the people who look out for you and let them follow your journey in real time."
+            title="Your circle"
+            body="Mum, your best friend, whoever picks up at 3am. Add them once."
           />
           <Feature
             icon={<IconPin />}
             tone="lav"
-            title="Trip planner"
-            body="Map out your routes and stays, and share your itinerary with someone you trust."
+            title="Trip sharing"
+            body="Plan a route and send it to someone before you head out."
           />
           <Feature
             icon={<IconShield />}
             tone="rose"
-            title="Local safety info"
-            body="Country emergency numbers and nearby embassies, ready before you even land."
-          />
-          <Feature
-            icon={<IconHeart />}
-            tone="rose"
-            title="Calm by design"
-            body="A gentle, clutter-free experience made to reassure — not to alarm."
+            title="Local numbers"
+            body="Police, ambulance and fire for the country you're in. Ready before you land."
           />
         </div>
       </section>
 
-      {/* How it works */}
-      <section className="section" style={{ paddingTop: 0 }}>
+      <section className="section reveal" id="pack">
         <div className="section-head">
-          <h2>Peace of mind in three steps</h2>
-          <p>Set it up once, then travel with someone always looking out for you.</p>
+          <h2>Pack your safety bag</h2>
+          <p>Tap the things you'd actually take. Careful, some of these are a bad idea.</p>
+        </div>
+        <PackingGame />
+      </section>
+
+      <section className="section reveal">
+        <div className="section-head">
+          <h2>How it works</h2>
         </div>
         <div className="steps">
-          <Step title="Create your account" body="Sign up securely in under a minute — no fuss." />
-          <Step
-            title="Add your trusted circle"
-            body="Choose the friends and family who should be able to reach you."
-          />
-          <Step
-            title="Travel with confidence"
-            body="Share your location, find help nearby, and SOS in one tap."
-          />
+          <Step title="Make an account" body="Takes about a minute." />
+          <Step title="Add your people" body="The ones who should hear from you if something's off." />
+          <Step title="Go!" body="Share where you are, find help nearby, or hit SOS if you need to." />
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="cta-band">
-        <h2>Ready to travel safer?</h2>
-        <p>Join women exploring the world with a trusted companion in their pocket.</p>
+      <section className="cta-band reveal">
+        <h2>Your next trip is waiting.</h2>
+        <p>Set it up now, before you need it.</p>
         <button className="btn btn-primary" onClick={onGetStarted}>
-          Get started for free
+          Let's go
         </button>
       </section>
 
       <footer className="landing-footer">
-        <p style={{ margin: 0 }}>
-          © {new Date().getFullYear()} HerWay · A safety companion for women travellers.
-        </p>
+        <p style={{ margin: 0 }}>© {new Date().getFullYear()} HerWay. Made by Vidushi.</p>
         <p className="disclaimer" style={{ marginTop: 6 }}>
-          HerWay is a safety aid and does not replace emergency services. In an emergency, always
-          contact local authorities.
+          HerWay is here to help, but it doesn't replace emergency services. If you're in danger,
+          call the local emergency number.
         </p>
       </footer>
     </div>

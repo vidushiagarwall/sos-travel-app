@@ -34,11 +34,11 @@ export function SOSPage() {
       <div className="sos-center">
         <SOSButton onClick={() => setTriggered(true)} disabled={!position || contacts.length === 0} />
       </div>
-      <p className="sos-hint">Tap when you feel unsafe — you'll confirm before anything sends.</p>
+      <p className="sos-hint">Tap if you feel unsafe. You'll confirm before anything gets sent.</p>
 
       {triggered && message && (
         <div className="sos-panel">
-          <p>Your message is ready. This is one-tap-to-send — tapping a link below opens your messaging app with everything pre-filled, you still confirm sending there.</p>
+          <p>Your message is ready. Pick an app below and it opens with everything filled in. You just hit send.</p>
           <p className="message-preview">{message}</p>
           <div className="button-row">
             <a className="btn btn-danger" href={buildSmsLink(phoneNumbers, message)}>

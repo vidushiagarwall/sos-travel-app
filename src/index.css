@@ -1,7 +1,4 @@
-/* ============================================================
-   HerWay — design system
-   Direction: "Calm & trustworthy" (teal + soft lavender)
-   ============================================================ */
+/* HerWay styles. Teal + lavender, keep it soft. */
 
 :root {
   /* Palette */
@@ -68,8 +65,15 @@ h1,
 h2,
 h3 {
   line-height: 1.2;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   margin: 0;
+}
+
+h1,
+h2,
+.landing h3 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 700;
 }
 
 a {
@@ -408,8 +412,9 @@ a {
 }
 
 .hero h1 em {
-  font-style: normal;
+  font-style: italic;
   color: var(--accent);
+  background: linear-gradient(transparent 62%, var(--lavender-soft) 62%);
 }
 
 .hero-lead {
@@ -471,10 +476,17 @@ a {
   margin: 0;
 }
 
-.features {
+.bento {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+}
+
+.feature-big {
+  grid-row: span 2;
+  background: linear-gradient(160deg, var(--danger-soft), var(--surface) 70%);
+  display: flex;
+  flex-direction: column;
 }
 
 .feature {
@@ -853,7 +865,7 @@ a {
     max-width: 320px;
   }
 
-  .features,
+  .bento,
   .steps {
     grid-template-columns: 1fr;
   }

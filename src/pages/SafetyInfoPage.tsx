@@ -52,7 +52,7 @@ export function SafetyInfoPage() {
       )}
 
       <p className="disclaimer">
-        Numbers are from a small bundled list and may go out of date — verify with an official source when possible.
+        These numbers come from our starter list and can change. Double check with an official source when you can.
       </p>
 
       <h2>Embassy / Consulate</h2>
