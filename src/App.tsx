@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { NavBar, type Page } from './components/NavBar'
+import { NavBar, TABS, type Page } from './components/NavBar'
+import { FEATURES } from './features'
 import { Brand } from './components/Brand'
 import { LandingPage } from './pages/LandingPage'
 import { AuthPage } from './pages/AuthPage'
@@ -13,7 +14,7 @@ type View = 'landing' | 'login' | 'signup' | 'app'
 
 function App() {
   const [view, setView] = useState<View>('landing')
-  const [page, setPage] = useState<Page>('map')
+  const [page, setPage] = useState<Page>(TABS[0].id)
 
   if (view === 'landing') {
     return (
@@ -43,10 +44,10 @@ function App() {
         </button>
       </header>
       <main className="app-main">
-        {page === 'map' && <MapPage />}
+        {page === 'map' && FEATURES.nearbySafety && <MapPage />}
         {page === 'sos' && <SOSPage />}
         {page === 'contacts' && <ContactsPage />}
-        {page === 'trips' && <TripPlannerPage />}
+        {page === 'trips' && FEATURES.trips && <TripPlannerPage />}
         {page === 'safety' && <SafetyInfoPage />}
       </main>
       <NavBar current={page} onChange={setPage} />

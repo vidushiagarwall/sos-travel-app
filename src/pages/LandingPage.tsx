@@ -6,6 +6,9 @@ import { Postcard } from '../components/Postcard'
 import { PracticeSOS } from '../components/PracticeSOS'
 import { PackingGame } from '../components/PackingGame'
 import { useReveal } from '../hooks/useReveal'
+import { FEATURES } from '../features'
+
+const COUNT_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five']
 
 const PLACES = ['Lisbon', 'Hanoi', 'Jaipur', 'Kyoto', 'Bali', 'Istanbul', 'Cusco', 'Marrakech', 'Seoul', 'Santorini']
 
@@ -17,6 +20,42 @@ export function LandingPage({
   onLogin: () => void
 }) {
   useReveal()
+
+  const smallCards = [
+    FEATURES.nearbySafety && (
+      <Feature
+        key="nearby"
+        icon={<IconMap />}
+        tone=""
+        title="Help nearby"
+        body="See the closest police stations and hospitals on a map, wherever you are."
+      />
+    ),
+    <Feature
+      key="circle"
+      icon={<IconUsers />}
+      tone="lav"
+      title="Your circle"
+      body="Mum, your best friend, whoever picks up at 3am. Add them once."
+    />,
+    FEATURES.trips && (
+      <Feature
+        key="trips"
+        icon={<IconPin />}
+        tone="lav"
+        title="Trip sharing"
+        body="Plan a route and send it to someone before you head out."
+      />
+    ),
+    <Feature
+      key="numbers"
+      icon={<IconShield />}
+      tone="rose"
+      title="Local numbers"
+      body="Police, ambulance and fire for the country you're in. Ready before you land."
+    />,
+  ].filter(Boolean)
+  const bentoCols = 1 + Math.ceil(smallCards.length / 2)
 
   return (
     <div className="landing">
@@ -41,8 +80,9 @@ export function LandingPage({
             Go anywhere. <em>Someone's got your back.</em>
           </h1>
           <p className="hero-lead">
-            HerWay keeps the people you trust in the loop, shows you where help is nearby, and puts
-            the local emergency numbers one tap away. So you can stop worrying and actually enjoy
+            HerWay keeps the people you trust in the loop
+            {FEATURES.nearbySafety ? ', shows you where help is nearby,' : ''} and puts the local
+            emergency numbers one tap away. So you can stop worrying and actually enjoy
             the trip.
           </p>
           <div className="hero-cta">
@@ -86,38 +126,15 @@ export function LandingPage({
       <section className="section reveal" id="features">
         <div className="section-head">
           <h2>What's inside</h2>
-          <p>Five tools. No clutter.</p>
+          <p>{COUNT_WORDS[smallCards.length + 1]} tools. No clutter.</p>
         </div>
-        <div className="bento">
+        <div className="bento" style={{ '--cols': bentoCols } as React.CSSProperties}>
           <article className="feature feature-big">
             <h3>SOS in one tap</h3>
             <p>Your live location and a help message go straight to your people.</p>
             <PracticeSOS />
           </article>
-          <Feature
-            icon={<IconMap />}
-            tone=""
-            title="Help nearby"
-            body="See the closest police stations and hospitals on a map, wherever you are."
-          />
-          <Feature
-            icon={<IconUsers />}
-            tone="lav"
-            title="Your circle"
-            body="Mum, your best friend, whoever picks up at 3am. Add them once."
-          />
-          <Feature
-            icon={<IconPin />}
-            tone="lav"
-            title="Trip sharing"
-            body="Plan a route and send it to someone before you head out."
-          />
-          <Feature
-            icon={<IconShield />}
-            tone="rose"
-            title="Local numbers"
-            body="Police, ambulance and fire for the country you're in. Ready before you land."
-          />
+          {smallCards}
         </div>
       </section>
 
@@ -136,7 +153,11 @@ export function LandingPage({
         <div className="steps">
           <Step title="Make an account" body="Takes about a minute." />
           <Step title="Add your people" body="The ones who should hear from you if something's off." />
-          <Step title="Go!" body="Share where you are, find help nearby, or hit SOS if you need to." />
+          <Step title="Go!" body={
+              FEATURES.nearbySafety
+                ? 'Share where you are, find help nearby, or hit SOS if you need to.'
+                : 'Share where you are, or hit SOS if you need to.'
+            } />
         </div>
       </section>
 

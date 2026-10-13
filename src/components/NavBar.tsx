@@ -1,14 +1,19 @@
 import { IconMap, IconSOS, IconUsers, IconRoute, IconInfo } from './icons'
+import { FEATURES } from '../features'
 
 export type Page = 'map' | 'sos' | 'contacts' | 'trips' | 'safety'
 
-const TABS: { id: Page; label: string; Icon: typeof IconMap }[] = [
+const ALL_TABS: { id: Page; label: string; Icon: typeof IconMap }[] = [
   { id: 'map', label: 'Map', Icon: IconMap },
   { id: 'sos', label: 'SOS', Icon: IconSOS },
   { id: 'contacts', label: 'Contacts', Icon: IconUsers },
   { id: 'trips', label: 'Trips', Icon: IconRoute },
   { id: 'safety', label: 'Safety', Icon: IconInfo },
 ]
+
+export const TABS = ALL_TABS.filter(
+  (t) => (t.id !== 'map' || FEATURES.nearbySafety) && (t.id !== 'trips' || FEATURES.trips),
+)
 
 export function NavBar({ current, onChange }: { current: Page; onChange: (page: Page) => void }) {
   return (
