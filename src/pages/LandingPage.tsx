@@ -7,6 +7,7 @@ import { PracticeSOS } from '../components/PracticeSOS'
 import { PackingGame } from '../components/PackingGame'
 import { useReveal } from '../hooks/useReveal'
 import { FEATURES } from '../features'
+import { WhatsComing } from '../components/WhatsComing'
 
 const COUNT_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five']
 
@@ -125,6 +126,15 @@ export function LandingPage({
           </article>
           {smallCards}
         </div>
+      </section>
+
+      <section className="section coming reveal" id="whats-coming">
+        <div className="section-head">
+          <span className="chip coming-tag">Coming soon</span>
+          <h2>What's coming</h2>
+          <p>Everything we're building next. Tap a feature to see what it does.</p>
+        </div>
+        <WhatsComing />
       </section>
 
       <section className="section reveal" id="pack">

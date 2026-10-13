@@ -42,7 +42,7 @@ Before building anything, write down what you want HerWay to be.
     - Is there a public database of unsafe places to travel?
     - Is there a database of helpline numbers for every country?
     - If I am travelling to Vietnam solo, what can this tool help me with?
-- [ ] A "What's coming" section on the link showing your Must have list
+- [x] A "What's coming" section on the link showing your Must have list
 
 **Test**
 
