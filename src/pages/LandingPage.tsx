@@ -10,7 +10,6 @@ import { FEATURES } from '../features'
 
 const COUNT_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five']
 
-const PLACES = ['Lisbon', 'Hanoi', 'Jaipur', 'Kyoto', 'Bali', 'Istanbul', 'Cusco', 'Marrakech', 'Seoul', 'Santorini']
 
 export function LandingPage({
   onGetStarted,
@@ -103,16 +102,6 @@ export function LandingPage({
           <span className="scribble hero-scribble">your people, always close</span>
         </div>
       </section>
-
-      <div className="marquee" aria-hidden="true">
-        <div className="marquee-track">
-          {[...PLACES, ...PLACES].map((p, i) => (
-            <span key={i}>
-              {p} <i>✦</i>
-            </span>
-          ))}
-        </div>
-      </div>
 
       <section className="section reveal" id="postcard">
         <div className="section-head">

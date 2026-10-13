@@ -183,41 +183,6 @@
   }
 }
 
-/* ---------- Destination strip ---------- */
-.marquee {
-  overflow: hidden;
-  border-block: 1px solid var(--border);
-  background: var(--surface);
-  padding: 14px 0;
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: slide 30s linear infinite;
-}
-
-.marquee-track span {
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 22px;
-  font-style: italic;
-  color: var(--accent-dark);
-  padding: 0 18px;
-  white-space: nowrap;
-}
-
-.marquee-track i {
-  font-style: normal;
-  color: var(--lavender);
-  margin-left: 18px;
-}
-
-@keyframes slide {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 /* ---------- Scroll reveal ---------- */
 .reveal {
   opacity: 0;
