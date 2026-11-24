@@ -15,12 +15,21 @@ type View = 'landing' | 'login' | 'signup' | 'app'
 function App() {
   const [view, setView] = useState<View>('landing')
   const [page, setPage] = useState<Page>(TABS[0].id)
+  // false when someone jumps straight to emergency help without logging in
+  const [signedIn, setSignedIn] = useState(false)
+
+  const openEmergency = () => {
+    setSignedIn(false)
+    setPage('sos')
+    setView('app')
+  }
 
   if (view === 'landing') {
     return (
       <LandingPage
         onGetStarted={() => setView('signup')}
         onLogin={() => setView('login')}
+        onEmergency={openEmergency}
       />
     )
   }
@@ -29,7 +38,10 @@ function App() {
     return (
       <AuthPage
         initialMode={view}
-        onAuthenticated={() => setView('app')}
+        onAuthenticated={() => {
+          setSignedIn(true)
+          setView('app')
+        }}
         onBack={() => setView('landing')}
       />
     )
@@ -40,7 +52,7 @@ function App() {
       <header className="app-header">
         <Brand onClick={() => setView('landing')} />
         <button className="btn btn-ghost" onClick={() => setView('landing')}>
-          Log out
+          {signedIn ? 'Log out' : 'Home'}
         </button>
       </header>
       <main className="app-main">

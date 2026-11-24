@@ -15,9 +15,11 @@ const COUNT_WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five']
 export function LandingPage({
   onGetStarted,
   onLogin,
+  onEmergency,
 }: {
   onGetStarted: () => void
   onLogin: () => void
+  onEmergency: () => void
 }) {
   useReveal()
 
@@ -72,6 +74,11 @@ export function LandingPage({
           </button>
         </nav>
       </header>
+
+      <button className="emergency-bar" onClick={onEmergency}>
+        <strong>I need help now</strong>
+        <span>SOS and emergency numbers. No login needed.</span>
+      </button>
 
       <section className="hero">
         <div>
