@@ -10,6 +10,7 @@ import { ContactsPage } from './pages/ContactsPage'
 import { TripPlannerPage } from './pages/TripPlannerPage'
 import { SafetyInfoPage } from './pages/SafetyInfoPage'
 import { EmergencyNumbersPage } from './pages/EmergencyNumbersPage'
+import { ShowScreenPage } from './pages/ShowScreenPage'
 
 type View = 'landing' | 'login' | 'signup' | 'app'
 
@@ -60,6 +61,7 @@ function App() {
         {page === 'map' && FEATURES.nearbySafety && <MapPage />}
         {page === 'sos' && <SOSPage />}
         {page === 'numbers' && <EmergencyNumbersPage />}
+        {page === 'show' && <ShowScreenPage onClose={() => setPage('sos')} />}
         {page === 'contacts' && <ContactsPage />}
         {page === 'trips' && FEATURES.trips && <TripPlannerPage />}
         {page === 'safety' && <SafetyInfoPage />}
