@@ -45,3 +45,23 @@ Last checked: 24 November 2026. India is now the first country on the page, so t
 **Please check these yourself:** the PIB, MHA and Ministry of Tourism pages blocked automatic reading, so these were confirmed from search summaries of those pages, not by opening them. The Haryana 181 page and the Embassy in Sweden tourist helpline page were read in full.
 
 MHA says 100 (police), 101 (fire), 108 (ambulance) and 181 are being merged into 112. Because whether the old numbers still work depends on the state, they aren't shown as buttons, only mentioned in a tip.
+
+---
+
+# "If you cannot reach her" page (family in India): sources
+
+Last checked: 24 November 2026. Data lives in `src/data/familyPlan.ts`.
+
+| Number | What | Source |
+| --- | --- | --- |
+| +84 913 089 165 | Indian Embassy Hanoi emergency line (also WhatsApp) | [Embassy of India Hanoi](https://www.indembassyhanoi.gov.in/page/emergency-contact-number) |
+| +84 24 3824 4989 | Indian Embassy Hanoi office | [Embassy of India Hanoi: Contact Us](https://www.indembassyhanoi.gov.in/page/contact-us/) |
+| 1800 11 8797 | MEA control room, toll free in India | [MEA advisory, March 2026](https://www.mea.gov.in/Images/CPV/4408-02-english-2026.pdf) |
+| +91 11 2301 1954 | MEA control room, South Block | [MEA: Contact](https://www.mea.gov.in/contact-tele-inquiry) |
+| madad.gov.in | MEA online help portal | (official site) |
+
+**Please check:** the MEA numbers were confirmed from search summaries of those pages, because mea.gov.in blocked automatic reading. The embassy pages were read in full. The embassy site also lists 1800118797 and three other MEA numbers, but under an old COVID-19 heading.
+
+**Tourist police in Hanoi:** no official number found. Vietnam police is 113 ([UK FCDO](https://www.gov.uk/foreign-travel-advice/vietnam/getting-help)), which only works from a phone in Vietnam, so the page asks family to go through the hotel or embassy.
+
+**Wait times** (right away, 2 hours, 6 hours, 12 hours) are HerWay's own suggestion, not official advice. The page says so.

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { TrustedContact } from '../types/contact'
 import { addContact, getAllContacts, removeContact } from '../storage/contactsStore'
 import { ContactListItem } from '../components/ContactListItem'
+import { FamilyLinkMaker } from '../components/FamilyLinkMaker'
 
 export function ContactsPage() {
   const [contacts, setContacts] = useState<TrustedContact[]>(getAllContacts())
@@ -30,6 +31,8 @@ export function ContactsPage() {
     <div>
       <h1 className="page-title">Trusted Contacts</h1>
       <p className="page-sub">The people who receive your SOS and trip-sharing messages.</p>
+
+      <FamilyLinkMaker />
 
       <form onSubmit={handleAdd} className="form card">
         <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavBar, TABS, type Page } from './components/NavBar'
 import { FEATURES } from './features'
 import { Brand } from './components/Brand'
@@ -11,6 +11,8 @@ import { TripPlannerPage } from './pages/TripPlannerPage'
 import { SafetyInfoPage } from './pages/SafetyInfoPage'
 import { EmergencyNumbersPage } from './pages/EmergencyNumbersPage'
 import { ShowScreenPage } from './pages/ShowScreenPage'
+import { FamilyPage } from './pages/FamilyPage'
+import { readFamilyLink } from './sharing/familyLink'
 
 type View = 'landing' | 'login' | 'signup' | 'app'
 
@@ -19,12 +21,22 @@ function App() {
   const [page, setPage] = useState<Page>(TABS[0].id)
   // false when someone jumps straight to emergency help without logging in
   const [signedIn, setSignedIn] = useState(false)
+  // Family opening an "If you cannot reach her" link: the details are in the # part
+  const [familyInfo, setFamilyInfo] = useState(() => readFamilyLink(window.location.hash))
+
+  useEffect(() => {
+    const onHash = () => setFamilyInfo(readFamilyLink(window.location.hash))
+    window.addEventListener('hashchange', onHash)
+    return () => window.removeEventListener('hashchange', onHash)
+  }, [])
 
   const openEmergency = () => {
     setSignedIn(false)
     setPage('sos')
     setView('app')
   }
+
+  if (familyInfo) return <FamilyPage info={familyInfo} />
 
   if (view === 'landing') {
     return (

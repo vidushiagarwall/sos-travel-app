@@ -1015,3 +1015,75 @@ a {
 .show-dots { display: flex; gap: 8px; }
 .show-dots span { width: 10px; height: 10px; border-radius: 50%; background: #555; }
 .show-dots span.on { background: #fff; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* "If you cannot reach her" link maker (Contacts tab) */
+.family-maker { margin-bottom: 24px; }
+.family-maker h2 { margin: 0 0 6px; font-size: 1.15rem; }
+.family-maker .field span { font-size: 13px; font-weight: 600; color: var(--muted); }
+.family-made { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+.family-made-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.family-made-note { margin: 12px 0 0; font-size: 0.9rem; }
+
+/* "If you cannot reach her" page, opened by family */
+.family-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.family-brand { margin: 0 0 4px; font-weight: 700; color: var(--accent); }
+.family-page h1 { margin: 0 0 8px; font-size: 1.7rem; line-height: 1.2; }
+.family-lead { margin: 0 0 16px; }
+.family-calm {
+  margin-bottom: 24px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+}
+.family-calm p { margin: 0 0 8px; }
+.family-calm p:last-child { margin: 0; }
+.family-step {
+  margin-bottom: 16px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+}
+.family-step-head { display: flex; gap: 14px; align-items: flex-start; }
+.family-step-head h2 { margin: 4px 0 0; font-size: 1.2rem; line-height: 1.25; }
+.family-num {
+  flex: 0 0 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+.family-wait {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--danger-soft);
+  color: var(--danger-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.family-step-body { margin-top: 10px; }
+.family-step-body p { margin: 0 0 10px; }
+.family-number { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.family-call { min-height: 52px; font-size: 1.05rem; }
+.family-label, .family-source { flex-basis: 100%; margin: 0 !important; font-size: 0.85rem; color: var(--muted); }
+.family-source a { color: inherit; }
