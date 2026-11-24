@@ -1,4 +1,6 @@
-# Vietnam emergency numbers: sources
+# Emergency numbers: sources
+
+## Vietnam
 
 Last checked: 24 November 2026. The data lives in `src/data/countryEmergency.ts`.
 
@@ -27,3 +29,19 @@ I couldn't find a current official tourist helpline for Hanoi. These are the lea
 - 1022 ext. 8: Ho Chi Minh City only, so not useful for Hanoi ([Tuoi Tre, 2023](https://tuoitrenews.vn/news/lifestyle/20231229/hotline-1022-extension-8-a-perfect-tool-for-tourists-wanting-to-explore-ho-chi-minh-city/77566.html))
 
 To do: check the Hanoi Department of Culture, Sports and Tourism website, or ask the Indian Embassy. If you confirm a number, add it to `countryEmergency.ts` with `kind: 'helpline'` and remove the "not yet confirmed" note.
+
+---
+
+# India emergency numbers: sources
+
+Last checked: 24 November 2026. India is now the first country on the page, so the page opens on it.
+
+| Number | What | Source |
+| --- | --- | --- |
+| 112 | All emergencies (police, fire, ambulance) | [PIB: Pan-India Emergency Number 112 launched](https://www.pib.gov.in/newsite/PrintRelease.aspx?relid=188727&reg=3&lang=2), [MHA: ERSS](https://www.mha.gov.in/en/commoncontent/emergency-response-support-system-erss) |
+| 181 | Women Helpline, 24 hours, toll free | [Govt of Haryana WCD: Women Helpline 181](https://wcdhry.gov.in/women-helpline-number-181/) |
+| 1363 / 1800 11 1363 | Ministry of Tourism helpline, 24x7, 12 languages | [Embassy of India, Sweden](https://www.indembassysweden.gov.in/page/tourist-help-line-in-india/), [Ministry of Tourism PDF (Feb 2026)](https://tourism.gov.in/sites/default/files/2026-02/Ministry%20of%20Tourism%20has%20set%20up%20a%2024x7%20Multi-Lingual%20Tourist%20Helpline.pdf) |
+
+**Please check these yourself:** the PIB, MHA and Ministry of Tourism pages blocked automatic reading, so these were confirmed from search summaries of those pages, not by opening them. The Haryana 181 page and the Embassy in Sweden tourist helpline page were read in full.
+
+MHA says 100 (police), 101 (fire), 108 (ambulance) and 181 are being merged into 112. Because whether the old numbers still work depends on the state, they aren't shown as buttons, only mentioned in a tip.

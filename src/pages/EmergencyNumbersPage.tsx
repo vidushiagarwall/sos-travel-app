@@ -70,7 +70,9 @@ export function EmergencyNumbersPage() {
         </p>
       ))}
 
-      <h2 className="numbers-h2">Embassy and helplines</h2>
+      <h2 className="numbers-h2">
+        {others.some((c) => c.kind === 'embassy') ? 'Embassy and helplines' : 'Helplines'}
+      </h2>
       <div className="call-list">
         {others.map((c) => (
           <CallButton key={c.label} contact={c} />
