@@ -20,3 +20,9 @@ export async function copyToClipboard(text: string): Promise<boolean> {
     return false
   }
 }
+
+// WhatsApp only finds a number written in full, with the country code (+91 ...).
+export function hasCountryCode(phoneNumber: string): boolean {
+  const n = phoneNumber.trim()
+  return (n.startsWith('+') || n.startsWith('00')) && n.replace(/\D/g, '').length >= 8
+}

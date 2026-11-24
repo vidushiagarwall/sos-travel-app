@@ -3,6 +3,7 @@ import type { TrustedContact } from '../types/contact'
 import { addContact, getAllContacts, removeContact } from '../storage/contactsStore'
 import { ContactListItem } from '../components/ContactListItem'
 import { FamilyLinkMaker } from '../components/FamilyLinkMaker'
+import { hasCountryCode } from '../sharing/shareLinks'
 
 export function ContactsPage() {
   const [contacts, setContacts] = useState<TrustedContact[]>(getAllContacts())
@@ -10,10 +11,16 @@ export function ContactsPage() {
   const [phoneNumber, setPhoneNumber] = useState('')
   const [relationship, setRelationship] = useState('')
   const [isPrimary, setIsPrimary] = useState(false)
+  const [phoneError, setPhoneError] = useState('')
 
   function handleAdd(e: React.FormEvent) {
     e.preventDefault()
     if (!name.trim() || !phoneNumber.trim()) return
+    if (!hasCountryCode(phoneNumber)) {
+      setPhoneError('Add the country code at the start, like +91 for India. WhatsApp needs it to find them.')
+      return
+    }
+    setPhoneError('')
     addContact({ name: name.trim(), phoneNumber: phoneNumber.trim(), relationship: relationship.trim(), isPrimary })
     setContacts(getAllContacts())
     setName('')
@@ -37,11 +44,16 @@ export function ContactsPage() {
       <form onSubmit={handleAdd} className="form card">
         <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
         <input
-          placeholder="Phone number (e.g. +1 555 123 4567)"
+          type="tel"
+          placeholder="Phone number with country code, e.g. +91 98765 43210"
           value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
+          onChange={(e) => {
+            setPhoneNumber(e.target.value)
+            setPhoneError('')
+          }}
           required
         />
+        {phoneError && <p className="error">{phoneError}</p>}
         <input
           placeholder="Relationship (optional)"
           value={relationship}

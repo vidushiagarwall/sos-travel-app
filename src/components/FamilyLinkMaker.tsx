@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { DESTINATIONS } from '../data/familyPlan'
 import { makeFamilyLink } from '../sharing/familyLink'
-import { buildSmsLink, buildWhatsAppLink } from '../sharing/shareLinks'
+import { buildSmsLink, buildWhatsAppLink, hasCountryCode } from '../sharing/shareLinks'
 import type { TrustedContact } from '../types/contact'
 
 // The traveller fills this in and shares the "If you cannot reach me" link.
@@ -137,6 +137,12 @@ export function FamilyLinkMaker({ contacts }: { contacts: TrustedContact[] }) {
                   <span className="family-send-name">
                     {c.name}
                     {c.relationship ? <span className="muted"> ({c.relationship})</span> : null}
+                    {!hasCountryCode(c.phoneNumber) && (
+                      <span className="family-send-warn">
+                        No country code on this number, so WhatsApp may not find them. Remove and
+                        add them again with +91 (or their country code) at the start.
+                      </span>
+                    )}
                   </span>
                   <span className="family-send-buttons">
                     <a

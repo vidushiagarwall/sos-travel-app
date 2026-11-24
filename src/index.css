@@ -1107,3 +1107,4 @@ a {
 .family-send-other { margin: 16px 0 10px; }
 .family-send-other span { font-size: 13px; font-weight: 600; color: var(--muted); }
 .family-made-actions { margin-top: 16px; }
+.family-send-warn { display: block; margin-top: 4px; font-size: 0.85rem; font-weight: 400; color: var(--danger-dark); }
