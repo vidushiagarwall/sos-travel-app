@@ -32,7 +32,7 @@ export function ContactsPage() {
       <h1 className="page-title">Trusted Contacts</h1>
       <p className="page-sub">The people who receive your SOS and trip-sharing messages.</p>
 
-      <FamilyLinkMaker />
+      <FamilyLinkMaker contacts={contacts} />
 
       <form onSubmit={handleAdd} className="form card">
         <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />

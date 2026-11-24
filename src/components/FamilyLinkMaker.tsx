@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { DESTINATIONS } from '../data/familyPlan'
 import { makeFamilyLink } from '../sharing/familyLink'
+import { buildSmsLink, buildWhatsAppLink } from '../sharing/shareLinks'
+import type { TrustedContact } from '../types/contact'
 
 // The traveller fills this in and shares the "If you cannot reach me" link.
 // Nothing is saved: the details go into the link only.
-export function FamilyLinkMaker() {
+export function FamilyLinkMaker({ contacts }: { contacts: TrustedContact[] }) {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [hotel, setHotel] = useState('')
@@ -13,6 +15,7 @@ export function FamilyLinkMaker() {
   const [dest, setDest] = useState(DESTINATIONS[0].code)
   const [link, setLink] = useState('')
   const [copied, setCopied] = useState(false)
+  const [otherNumber, setOtherNumber] = useState('')
 
   function handleMake(e: React.FormEvent) {
     e.preventDefault()
@@ -121,18 +124,69 @@ export function FamilyLinkMaker() {
           <p>
             <strong>Your link is ready.</strong> Send it to your family before you fly.
           </p>
+          <h3 className="family-send-title">Send to:</h3>
+          {contacts.length === 0 ? (
+            <p className="muted">
+              You haven't saved any contacts yet. Add your family in the "Add contact" form below,
+              and they'll show up here.
+            </p>
+          ) : (
+            <ul className="family-send-list">
+              {contacts.map((c) => (
+                <li key={c.id}>
+                  <span className="family-send-name">
+                    {c.name}
+                    {c.relationship ? <span className="muted"> ({c.relationship})</span> : null}
+                  </span>
+                  <span className="family-send-buttons">
+                    <a
+                      className="btn btn-primary"
+                      href={buildWhatsAppLink(message, c.phoneNumber)}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      WhatsApp
+                    </a>
+                    <a className="btn btn-ghost" href={buildSmsLink([c.phoneNumber], message)}>
+                      SMS
+                    </a>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <label className="field family-send-other">
+            <span>Or send to another number, with country code</span>
+            <input
+              className="input"
+              type="tel"
+              placeholder="+91 98765 43210"
+              value={otherNumber}
+              onChange={(e) => setOtherNumber(e.target.value)}
+              maxLength={30}
+            />
+          </label>
+          {otherNumber.replace(/\D/g, '').length >= 8 && (
+            <div className="family-send-buttons">
+              <a
+                className="btn btn-primary"
+                href={buildWhatsAppLink(message, otherNumber)}
+                target="_blank"
+                rel="noreferrer"
+              >
+                WhatsApp
+              </a>
+              <a className="btn btn-ghost" href={buildSmsLink([otherNumber.trim()], message)}>
+                SMS
+              </a>
+            </div>
+          )}
+
           <div className="family-made-actions">
-            <button className="btn btn-primary" onClick={handleShare}>
-              Share link
+            <button className="btn btn-ghost" onClick={handleShare}>
+              Share another way
             </button>
-            <a
-              className="btn btn-ghost"
-              href={`https://wa.me/?text=${encodeURIComponent(message)}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Send on WhatsApp
-            </a>
             <button className="btn btn-ghost" onClick={handleCopy}>
               {copied ? 'Copied!' : 'Copy link'}
             </button>

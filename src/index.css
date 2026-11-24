@@ -1087,3 +1087,23 @@ a {
 .family-call { min-height: 52px; font-size: 1.05rem; }
 .family-label, .family-source { flex-basis: 100%; margin: 0 !important; font-size: 0.85rem; color: var(--muted); }
 .family-source a { color: inherit; }
+
+/* Picking who to send the family link to */
+.family-send-title { margin: 16px 0 8px; font-size: 1rem; }
+.family-send-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.family-send-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.family-send-name { font-weight: 600; }
+.family-send-buttons { display: flex; gap: 8px; }
+.family-send-buttons .btn { min-height: 44px; }
+.family-send-other { margin: 16px 0 10px; }
+.family-send-other span { font-size: 13px; font-weight: 600; color: var(--muted); }
+.family-made-actions { margin-top: 16px; }
