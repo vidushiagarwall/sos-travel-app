@@ -899,3 +899,44 @@ a {
 .emergency-bar strong { font-size: 1.1rem; }
 .emergency-bar span { font-size: 0.9rem; }
 .emergency-bar:focus-visible { outline: 3px solid var(--danger); outline-offset: 3px; }
+
+/* Emergency numbers page: big tap-to-call buttons */
+.numbers-first {
+  margin: 12px 0 16px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--danger-soft);
+  color: var(--danger-dark);
+  font-weight: 600;
+}
+.call-list { display: flex; flex-direction: column; gap: 14px; }
+.call-item { display: flex; flex-direction: column; gap: 4px; }
+.call-btn {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px 12px;
+  align-items: center;
+  min-height: 72px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: #fff;
+  background: var(--danger-dark);
+}
+.call-btn:active { transform: scale(0.98); }
+.call-btn:focus-visible { outline: 3px solid var(--danger); outline-offset: 3px; }
+.call-embassy, .call-helpline { background: var(--surface); color: inherit; border: 2px solid currentColor; }
+.call-label { font-weight: 700; font-size: 1.05rem; }
+.call-number { grid-row: span 2; font-size: 1.6rem; font-weight: 800; letter-spacing: 0.02em; }
+.call-desc { font-size: 0.9rem; opacity: 0.9; }
+.call-embassy .call-number, .call-helpline .call-number { font-size: 1.15rem; }
+.call-source { margin: 0 4px; font-size: 0.8rem; color: var(--muted, #666); }
+.call-source a { color: inherit; }
+.numbers-tip { margin: 16px 0 0; font-size: 0.95rem; }
+.numbers-h2 { margin: 28px 0 12px; font-size: 1.2rem; }
+.numbers-missing { margin-top: 14px; }
+.numbers-missing p { margin: 4px 0 0; }
+@media (max-width: 380px) {
+  .call-btn { grid-template-columns: 1fr; }
+  .call-number { grid-row: auto; }
+}

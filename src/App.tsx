@@ -9,6 +9,7 @@ import { SOSPage } from './pages/SOSPage'
 import { ContactsPage } from './pages/ContactsPage'
 import { TripPlannerPage } from './pages/TripPlannerPage'
 import { SafetyInfoPage } from './pages/SafetyInfoPage'
+import { EmergencyNumbersPage } from './pages/EmergencyNumbersPage'
 
 type View = 'landing' | 'login' | 'signup' | 'app'
 
@@ -58,6 +59,7 @@ function App() {
       <main className="app-main">
         {page === 'map' && FEATURES.nearbySafety && <MapPage />}
         {page === 'sos' && <SOSPage />}
+        {page === 'numbers' && <EmergencyNumbersPage />}
         {page === 'contacts' && <ContactsPage />}
         {page === 'trips' && FEATURES.trips && <TripPlannerPage />}
         {page === 'safety' && <SafetyInfoPage />}

@@ -10,6 +10,12 @@ const base: SVGProps<SVGSVGElement> = {
   strokeLinejoin: 'round',
 }
 
+export const IconPhone = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base} {...p}>
+    <path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z" />
+  </svg>
+)
+
 export const IconMap = (p: SVGProps<SVGSVGElement>) => (
   <svg {...base} {...p}>
     <path d="M9 3 3 5v16l6-2 6 2 6-2V3l-6 2-6-2Z" />

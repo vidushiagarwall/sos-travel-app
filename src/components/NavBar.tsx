@@ -1,11 +1,12 @@
-import { IconMap, IconSOS, IconUsers, IconRoute, IconInfo } from './icons'
+import { IconMap, IconSOS, IconUsers, IconRoute, IconInfo, IconPhone } from './icons'
 import { FEATURES } from '../features'
 
-export type Page = 'map' | 'sos' | 'contacts' | 'trips' | 'safety'
+export type Page = 'map' | 'sos' | 'numbers' | 'contacts' | 'trips' | 'safety'
 
 const ALL_TABS: { id: Page; label: string; Icon: typeof IconMap }[] = [
   { id: 'map', label: 'Map', Icon: IconMap },
   { id: 'sos', label: 'SOS', Icon: IconSOS },
+  { id: 'numbers', label: 'Numbers', Icon: IconPhone },
   { id: 'contacts', label: 'Contacts', Icon: IconUsers },
   { id: 'trips', label: 'Trips', Icon: IconRoute },
   { id: 'safety', label: 'Safety', Icon: IconInfo },
