@@ -2,8 +2,9 @@ import { useState } from 'react'
 import { useCurrentLocation } from '../location/useCurrentLocation'
 import { getAllContacts } from '../storage/contactsStore'
 import { buildSosMessage } from '../sharing/sosMessage'
-import { buildSmsLink, buildWhatsAppLink, copyToClipboard } from '../sharing/shareLinks'
+import { copyToClipboard } from '../sharing/shareLinks'
 import { SOSButton } from '../components/SOSButton'
+import { ContactSendList } from '../components/ContactSendList'
 
 export function SOSPage() {
   const { position, error: locationError, loading: locationLoading } = useCurrentLocation()
@@ -12,7 +13,6 @@ export function SOSPage() {
   const [copied, setCopied] = useState(false)
 
   const message = position ? buildSosMessage(position) : null
-  const phoneNumbers = contacts.map((c) => c.phoneNumber)
 
   async function handleCopy() {
     if (!message) return
@@ -38,20 +38,10 @@ export function SOSPage() {
 
       {triggered && message && (
         <div className="sos-panel">
-          <p>Your message is ready. Pick an app below and it opens with everything filled in. You just hit send.</p>
+          <p>Your message is ready. Untick anyone you don't want to send it to, then tap WhatsApp or SMS next to each person. The app opens with everything filled in. You just hit send.</p>
           <p className="message-preview">{message}</p>
+          <ContactSendList contacts={contacts} message={message} />
           <div className="button-row">
-            <a className="btn btn-danger" href={buildSmsLink(phoneNumbers, message)}>
-              Send via SMS
-            </a>
-            <a
-              className="btn btn-primary"
-              href={buildWhatsAppLink(message, phoneNumbers[0])}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Send via WhatsApp
-            </a>
             <button className="btn btn-ghost" onClick={handleCopy}>
               {copied ? 'Copied!' : 'Copy message'}
             </button>

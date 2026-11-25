@@ -5,7 +5,8 @@ import type { SavedTrip } from '../types/trip'
 import { TripCard } from '../components/TripCard'
 import { buildDirectionsUrl, buildTripShareMessage } from '../sharing/sosMessage'
 import { getAllContacts } from '../storage/contactsStore'
-import { buildSmsLink, buildWhatsAppLink, copyToClipboard } from '../sharing/shareLinks'
+import { copyToClipboard } from '../sharing/shareLinks'
+import { ContactSendList } from '../components/ContactSendList'
 
 export function TripPlannerPage() {
   const [title, setTitle] = useState('')
@@ -98,18 +99,8 @@ export function TripPlannerPage() {
         <div className="sos-panel">
           <p className="message-preview">{shareState.message}</p>
           {contacts.length === 0 && <p className="error">Add trusted contacts first to send this.</p>}
+          <ContactSendList contacts={contacts} message={shareState.message} />
           <div className="button-row">
-            <a className="btn btn-primary" href={buildSmsLink(contacts.map((c) => c.phoneNumber), shareState.message)}>
-              Send via SMS
-            </a>
-            <a
-              className="btn btn-primary"
-              href={buildWhatsAppLink(shareState.message, contacts[0]?.phoneNumber)}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Send via WhatsApp
-            </a>
             <button className="btn btn-ghost" onClick={handleCopy}>
               {copied ? 'Copied!' : 'Copy message'}
             </button>

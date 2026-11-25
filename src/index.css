@@ -1108,3 +1108,9 @@ a {
 .family-send-other span { font-size: 13px; font-weight: 600; color: var(--muted); }
 .family-made-actions { margin-top: 16px; }
 .family-send-warn { display: block; margin-top: 4px; font-size: 0.85rem; font-weight: 400; color: var(--danger-dark); }
+
+/* Shared "Send to" list on SOS + trip share */
+.contact-send { margin: 12px 0; }
+.contact-send-pick { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; flex: 1 1 180px; }
+.contact-send-pick input { width: 20px; height: 20px; margin-top: 2px; flex-shrink: 0; }
+.contact-send-all { margin-top: 12px; min-height: 44px; }
