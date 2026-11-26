@@ -23,7 +23,9 @@ export function ContactSendList({ contacts, message }: { contacts: TrustedContac
 
   return (
     <div className="contact-send">
-      <h3 className="family-send-title">Send to:</h3>
+      <h3 className="family-send-title">
+        Send to {ticked.length} of {contacts.length} {contacts.length === 1 ? 'person' : 'people'}:
+      </h3>
       <ul className="family-send-list">
         {contacts.map((c) => {
           const on = !unticked.has(c.id)

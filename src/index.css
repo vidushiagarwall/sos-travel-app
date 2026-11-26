@@ -1114,3 +1114,14 @@ a {
 .contact-send-pick { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; flex: 1 1 180px; }
 .contact-send-pick input { width: 20px; height: 20px; margin-top: 2px; flex-shrink: 0; }
 .contact-send-all { margin-top: 12px; min-height: 44px; }
+
+.contact-actions {
+  display: flex;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.sos-recipients {
+  font-size: 15px;
+  margin: 0 0 8px;
+}

@@ -6,7 +6,7 @@ import { copyToClipboard } from '../sharing/shareLinks'
 import { SOSButton } from '../components/SOSButton'
 import { ContactSendList } from '../components/ContactSendList'
 
-export function SOSPage() {
+export function SOSPage({ onOpenContacts }: { onOpenContacts: () => void }) {
   const { position, error: locationError, loading: locationLoading } = useCurrentLocation()
   const contacts = getAllContacts()
   const [triggered, setTriggered] = useState(false)
@@ -25,8 +25,15 @@ export function SOSPage() {
     <div>
       <h1 className="page-title">Emergency SOS</h1>
       <p className="page-sub">One tap alerts your trusted circle with your live location.</p>
-      {contacts.length === 0 && (
-        <p className="error">Add at least one trusted contact before using SOS.</p>
+      {contacts.length === 0 ? (
+        <p className="error">
+          Add at least one trusted contact before using SOS. <button className="link-button" onClick={onOpenContacts}>Add one now</button>
+        </p>
+      ) : (
+        <p className="sos-recipients">
+          Your SOS will go to <strong>{contacts.length} {contacts.length === 1 ? 'person' : 'people'}</strong>:{' '}
+          {contacts.map((c) => c.name).join(', ')}. <button className="link-button" onClick={onOpenContacts}>Change</button>
+        </p>
       )}
       {locationLoading && <p className="muted">Getting your location…</p>}
       {locationError && <p className="error">{locationError}</p>}

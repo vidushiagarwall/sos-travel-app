@@ -71,7 +71,7 @@ function App() {
       </header>
       <main className="app-main">
         {page === 'map' && FEATURES.nearbySafety && <MapPage />}
-        {page === 'sos' && <SOSPage />}
+        {page === 'sos' && <SOSPage onOpenContacts={() => setPage('contacts')} />}
         {page === 'numbers' && <EmergencyNumbersPage />}
         {page === 'show' && <ShowScreenPage onClose={() => setPage('sos')} />}
         {page === 'contacts' && <ContactsPage />}
